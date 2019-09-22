@@ -14,6 +14,14 @@ public class Department {
         this.total_employees = total_employees;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

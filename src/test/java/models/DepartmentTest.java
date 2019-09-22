@@ -43,6 +43,12 @@ public class DepartmentTest {
         assertNotEquals("accounts", department.getName());
     }
 
+    @Test
+    public void setId() {
+        Department department =setupDepartment();
+        department.setId(5);
+        assertEquals(5, department.getId());
+    }
     //helper method
     public Department setupDepartment(){
         return new Department("ICT", "ict support", 15);
