@@ -21,6 +21,27 @@ public class DepartmentTest {
         Department department =setupDepartment();
         assertTrue(department instanceof Department);
     }
+    @Test
+    public void getName() {
+        Department department =setupDepartment();
+        assertEquals("ICT", department.getName());
+    }
+    @Test
+    public void getDescription() {
+        Department department =setupDepartment();
+        assertEquals("ict support", department.getDescription());
+    }
+    @Test
+    public void getTotal_employees() {
+        Department department =setupDepartment();
+        assertEquals(15, department.getTotal_employees());
+    }
+    @Test
+    public void setName() {
+        Department department =setupDepartment();
+        department.setName("ICT");
+        assertNotEquals("accounts", department.getName());
+    }
 
     //helper method
     public Department setupDepartment(){
