@@ -65,7 +65,6 @@ public class App {
         });
 
         //get news by department id
-
         get("/departments/:id/news", "application/json", (req, res) -> {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("id"));

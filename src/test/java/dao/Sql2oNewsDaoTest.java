@@ -44,12 +44,12 @@ public class Sql2oNewsDaoTest {
     }
 
     @Test
-    public void getAll() {
+    public void getAll_returns_organizationNews(){
         News orgNews=setUpOrgNews();
         assertEquals(1,newsDao.getAll().size());
     }
     @Test
-    public void getAll_returns_organizationNews() {
+    public void getAll(){
         News news1=setUpNews();
         News news2= setUpNews();
         assertEquals(2,newsDao.getAll().size());
