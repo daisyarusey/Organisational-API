@@ -42,26 +42,27 @@ public class Sql2oDepartmentDaoTest {
 
     @Test
     public void findById() {
+        Department department1 = setupDepartment();
+        assertEquals(department1, departmentDao.findById(department1.getId()));
     }
 
-    @Test
-    public void getAllEmployeesForADepartment() {
-    }
 
-    @Test
-    public void getAllNewsForDepartment() {
-    }
-
-    @Test
-    public void update() {
-    }
 
     @Test
     public void deleteById() {
+        Department department = setupDepartment();
+        Department department1= setupDepartment();
+        assertEquals(2,departmentDao.getAll().size());
+        departmentDao.deleteById(department.getId());
+        assertEquals(1,departmentDao.getAll().size());
     }
 
     @Test
     public void clearAll() {
+        Department department = setupDepartment();
+        Department department1= setupDepartment();
+        departmentDao.clearAll();
+        assertEquals(0, departmentDao.getAll().size());
     }
 
     public Department setupDepartment(){

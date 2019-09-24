@@ -59,9 +59,9 @@ public class App {
         //find department by id
         get("/departments/:id", "application/json", (req, res) -> {
             res.type("application/json");
-            int department_id = Integer.parseInt(req.params("id"));
+            int id = Integer.parseInt(req.params("id"));
             res.type("application/json");
-            return gson.toJson(departmentDao.findById(department_id));
+            return gson.toJson(departmentDao.findById(id));
         });
 
         //get news by department id
@@ -69,7 +69,7 @@ public class App {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("id"));
             res.type("application/json");
-            return gson.toJson(departmentDao.getAllNewsForDepartment(department_id));
+            return gson.toJson(newsDao.getAllNewsByDepartment(department_id));
         });
 
         //get employees in a department
@@ -77,7 +77,7 @@ public class App {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("id"));
             res.type("application/json");
-            return gson.toJson(departmentDao.getAllEmployeesForADepartment(department_id));
+            return gson.toJson(employeeDao.getAllEmployeesByDepartment(department_id));
         });
 
         //create new employee
