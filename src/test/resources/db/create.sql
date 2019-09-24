@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS departments (
  );
 
 CREATE TABLE IF NOT EXISTS employees(
-id int PRIMAORY KEY auto_increment,
+id int PRIMARY KEY auto_increment,
 name VARCHAR,
 position VARCHAR,
 role vARCHAR,
