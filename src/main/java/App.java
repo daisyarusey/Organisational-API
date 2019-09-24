@@ -73,6 +73,14 @@ public class App {
             return gson.toJson(departmentDao.getAllNewsForDepartment(department_id));
         });
 
+        //get employees in a department
+        get("/departments/:id/employee", "application/json", (req, res) -> {
+            res.type("application/json");
+            int department_id = Integer.parseInt(req.params("id"));
+            res.type("application/json");
+            return gson.toJson(departmentDao.getAllEmployeesForADepartment(department_id));
+        });
+
         //create new employee
         post("/employees/new", "application/json", (req, res) -> {
             Employee employee = gson.fromJson(req.body(), Employee.class);
