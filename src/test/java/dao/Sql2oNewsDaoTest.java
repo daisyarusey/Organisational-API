@@ -9,6 +9,8 @@ import models.Department;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oNewsDaoTest {
@@ -34,27 +36,35 @@ public class Sql2oNewsDaoTest {
     @Test
     public void add() {
         News news=setUpNews();
-        newsDao.add(news);
         assertEquals(1,newsDao.getAll().size());
     }
     @Test
     public void add_asignsId(){
         News news=setUpNews();
-        newsDao.add(news);
-        int id = news.getId();
         assertEquals(1,news.getId());
     }
 
     @Test
     public void getAll() {
+        News news1=setUpNews();
+        News news2= setUpNews();
+        assertEquals(2,newsDao.getAll().size());
     }
 
     @Test
     public void getAllNewsByDepartment() {
+        News news=setUpNews();
+        List<News> allNewsByDepartmentId = newsDao.getAllNewsByDepartment(news.getDepartment_id());
+        assertEquals(news.getDepartment_id(),allNewsByDepartmentId.get(0).getDepartment_id());
     }
 
     @Test
     public void deleteById() {
+        News news=setUpNews();
+        News news2= setUpNews();
+        assertEquals(2,newsDao.getAll().size());
+        newsDao.deleteById(news.getId());
+        assertEquals(1,newsDao.getAll().size());
     }
 
     @Test
@@ -64,6 +74,8 @@ public class Sql2oNewsDaoTest {
     //helper
     public News setUpNews(){
         News news =new News("Review","The employees in this department are friendly","Daisy",2);
+        newsDao.add(news);
         return news;
     }
+
 }
