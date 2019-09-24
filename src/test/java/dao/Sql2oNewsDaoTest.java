@@ -37,7 +37,13 @@ public class Sql2oNewsDaoTest {
         newsDao.add(news);
         assertEquals(1,newsDao.getAll().size());
     }
-    
+    @Test
+    public void add_asignsId(){
+        News news=setUpNews();
+        newsDao.add(news);
+        int id = news.getId();
+        assertEquals(1,news.getId());
+    }
 
     @Test
     public void getAll() {
