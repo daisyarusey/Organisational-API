@@ -69,6 +69,10 @@ public class Sql2oNewsDaoTest {
 
     @Test
     public void clearAll() {
+        News news=setUpNews();
+        News news2= setUpNews();
+        newsDao.clearAll();
+        assertEquals(0,newsDao.getAll().size());
     }
 
     //helper
