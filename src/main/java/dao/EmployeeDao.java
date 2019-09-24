@@ -11,7 +11,6 @@ public interface EmployeeDao {
     //read
     List<Employee> getAll();
     Employee findById(int id);
-    List<Employee> getAllUsersByDepartment(int department_id);
 
     //delete
     void deleteById(int id);
