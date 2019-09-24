@@ -39,24 +39,6 @@ public class App {
             return gson.toJson(department);
         });
 
-        //create new employee
-        post("/employees/new", "application/json", (req, res) -> {
-            Employee employee = gson.fromJson(req.body(), Employee.class);
-            employeeDao.add(employee);
-            res.type("application/json");
-            res.status(201);
-            return gson.toJson(employee);
-        });
-
-        // create news
-        post("/news/new", "application/json", (req, res) -> {
-            News news = gson.fromJson(req.body(), News.class);
-            newsDao.add(news);
-            res.type("application/json");
-            res.status(201);
-            return gson.toJson(news);
-        });
-
         //add news to department
         post("/departments/:id/news/new", "application/json", (req, res) -> {
             int department_id = Integer.parseInt(req.params("department_id"));
@@ -75,11 +57,43 @@ public class App {
         });
 
         //find department by id
-        get("/departments/:id", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/departments/:id", "application/json", (req, res) -> {
             res.type("application/json");
             int department_id = Integer.parseInt(req.params("id"));
             res.type("application/json");
             return gson.toJson(departmentDao.findById(department_id));
         });
+
+        //get news by department id
+
+        get("/departments/:id/news", "application/json", (req, res) -> {
+            res.type("application/json");
+            int department_id = Integer.parseInt(req.params("id"));
+            res.type("application/json");
+            return gson.toJson(departmentDao.getAllNewsForDepartment(department_id));
+        });
+
+        //create new employee
+        post("/employees/new", "application/json", (req, res) -> {
+            Employee employee = gson.fromJson(req.body(), Employee.class);
+            employeeDao.add(employee);
+            res.type("application/json");
+            res.status(201);
+            return gson.toJson(employee);
+        });
+
+        // create news
+        post("/news/new", "application/json", (req, res) -> {
+            News news = gson.fromJson(req.body(), News.class);
+            newsDao.add(news);
+            res.type("application/json");
+            res.status(201);
+            return gson.toJson(news);
+        });
+
+
+
+
+
     }
 }
