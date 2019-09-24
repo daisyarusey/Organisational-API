@@ -1,6 +1,4 @@
 package dao;
-
-import org.h2.util.New;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +36,7 @@ public class Sql2oNewsDaoTest {
         News news=setUpNews();
         assertEquals(1,newsDao.getAll().size());
     }
+
     @Test
     public void add_asignsId(){
         News news=setUpNews();
@@ -46,10 +45,16 @@ public class Sql2oNewsDaoTest {
 
     @Test
     public void getAll() {
+        News orgNews=setUpOrgNews();
+        assertEquals(1,newsDao.getAll().size());
+    }
+    @Test
+    public void getAll_returns_organizationNews() {
         News news1=setUpNews();
         News news2= setUpNews();
         assertEquals(2,newsDao.getAll().size());
     }
+
 
     @Test
     public void getAllNewsByDepartment() {
@@ -78,8 +83,15 @@ public class Sql2oNewsDaoTest {
     //helper
     public News setUpNews(){
         News news =new News("Review","The employees in this department are friendly","Daisy",2);
+
         newsDao.add(news);
+
         return news;
+    }
+    public News setUpOrgNews(){
+        News organizationNews = new News("Review","Very good services","Daisy");
+        newsDao.add(organizationNews);
+        return organizationNews;
     }
 
 }
